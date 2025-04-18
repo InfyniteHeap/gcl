@@ -10,10 +10,13 @@
     "frontendDist": "../dist"
   },
   "app": {
+    "macOSPrivateApi": true,
     "windows": [
       {
         "title": "Grid Craft Launcher",
         "center": true,
+        "fullscreen": false,
+        "transparent": true,
         "width": 1152,
         "height": 648
       }

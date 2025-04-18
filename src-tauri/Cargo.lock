@@ -1102,6 +1102,9 @@ dependencies = [
  "tauri",
  "tauri-build",
  "tauri-plugin-opener",
+ "window-vibrancy",
+ "windows 0.61.1",
+ "windows-version",
 ]
 
 [[package]]
