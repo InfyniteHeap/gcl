@@ -12,9 +12,10 @@
   "app": {
     "windows": [
       {
-        "title": "gcl",
-        "width": 800,
-        "height": 600
+        "title": "Grid Craft Launcher",
+        "center": true,
+        "width": 1152,
+        "height": 648
       }
     ],
     "security": {
