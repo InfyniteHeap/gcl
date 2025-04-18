@@ -4,11 +4,11 @@
     "npm:@tauri-apps/api@2": "2.5.0",
     "npm:@tauri-apps/cli@2": "2.5.0",
     "npm:@tauri-apps/plugin-opener@2": "2.2.6",
-    "npm:@vitejs/plugin-vue@^5.2.1": "5.2.3_vite@6.3.2__picomatch@4.0.2_vue@3.5.13__typescript@5.6.3_typescript@5.6.3",
-    "npm:typescript@~5.6.2": "5.6.3",
+    "npm:@vitejs/plugin-vue@^5.2.1": "5.2.3_vite@6.3.2__picomatch@4.0.2_vue@3.5.13__typescript@5.8.3_typescript@5.8.3",
+    "npm:typescript@^5.8.3": "5.8.3",
     "npm:vite@^6.0.3": "6.3.2_picomatch@4.0.2",
-    "npm:vue-tsc@^2.1.10": "2.2.8_typescript@5.6.3",
-    "npm:vue@^3.5.13": "3.5.13_typescript@5.6.3"
+    "npm:vue-tsc@^2.1.10": "2.2.8_typescript@5.8.3",
+    "npm:vue@^3.5.13": "3.5.13_typescript@5.8.3"
   },
   "npm": {
     "@babel/helper-string-parser@7.25.9": {
@@ -229,7 +229,7 @@
     "@types/estree@1.0.7": {
       "integrity": "sha512-w28IoSUCJpidD/TGviZwwMJckNESJZXFu7NBZ5YJ4mEUnNraUn9Pm8HSZm/jDF1pDWYKspWE7oVphigUPRakIQ=="
     },
-    "@vitejs/plugin-vue@5.2.3_vite@6.3.2__picomatch@4.0.2_vue@3.5.13__typescript@5.6.3_typescript@5.6.3": {
+    "@vitejs/plugin-vue@5.2.3_vite@6.3.2__picomatch@4.0.2_vue@3.5.13__typescript@5.8.3_typescript@5.8.3": {
       "integrity": "sha512-IYSLEQj4LgZZuoVpdSUCw3dIynTWQgPlaRP6iAvMle4My0HdYwr5g5wQAfwOeHQBmYwEkqF70nRpSilr6PoUDg==",
       "dependencies": [
         "vite",
@@ -298,7 +298,7 @@
         "he"
       ]
     },
-    "@vue/language-core@2.2.8_typescript@5.6.3": {
+    "@vue/language-core@2.2.8_typescript@5.8.3": {
       "integrity": "sha512-rrzB0wPGBvcwaSNRriVWdNAbHQWSf0NlGqgKHK5mEkXpefjUlVRP62u03KvwZpvKVjRnBIQ/Lwre+Mx9N6juUQ==",
       "dependencies": [
         "@volar/language-core",
@@ -334,7 +334,7 @@
         "csstype"
       ]
     },
-    "@vue/server-renderer@3.5.13_vue@3.5.13__typescript@5.6.3_typescript@5.6.3": {
+    "@vue/server-renderer@3.5.13_vue@3.5.13__typescript@5.8.3_typescript@5.8.3": {
       "integrity": "sha512-wAi4IRJV/2SAW3htkTlB+dHeRmpTiVIK1OGLWV1yeStVSebSQQOwGwIq0D3ZIoBj2C2qpgz5+vX9iEBkTdk5YA==",
       "dependencies": [
         "@vue/compiler-ssr",
@@ -483,8 +483,8 @@
         "picomatch"
       ]
     },
-    "typescript@5.6.3": {
-      "integrity": "sha512-hjcS1mhfuyi4WW8IWtjP7brDrG2cuDZukyrYrSauoXGNgx0S7zceP07adYkJycEr56BOUTNPzbInooiN3fn1qw=="
+    "typescript@5.8.3": {
+      "integrity": "sha512-p1diW6TqL9L07nNxvRMM7hMMw4c5XOo/1ibL4aAIGmSAt9slTE1Xgw5KWuof2uTOvCg9BY7ZRi+GaF+7sfgPeQ=="
     },
     "vite@6.3.2_picomatch@4.0.2": {
       "integrity": "sha512-ZSvGOXKGceizRQIZSz7TGJ0pS3QLlVY/9hwxVh17W3re67je1RKYzFHivZ/t0tubU78Vkyb9WnHPENSBCzbckg==",
@@ -501,7 +501,7 @@
     "vscode-uri@3.1.0": {
       "integrity": "sha512-/BpdSx+yCQGnCvecbyXdxHDkuk55/G3xwnC0GqY4gmQ3j+A+g8kzzgB4Nk/SINjqn6+waqw3EgbVF2QKExkRxQ=="
     },
-    "vue-tsc@2.2.8_typescript@5.6.3": {
+    "vue-tsc@2.2.8_typescript@5.8.3": {
       "integrity": "sha512-jBYKBNFADTN+L+MdesNX/TB3XuDSyaWynKMDgR+yCSln0GQ9Tfb7JS2lr46s2LiFUT1WsmfWsSvIElyxzOPqcQ==",
       "dependencies": [
         "@volar/typescript",
@@ -509,7 +509,7 @@
         "typescript"
       ]
     },
-    "vue@3.5.13_typescript@5.6.3": {
+    "vue@3.5.13_typescript@5.8.3": {
       "integrity": "sha512-wmeiSMxkZCSc+PM2w2VRsOYAZC8GdipNFRTsLSfodVqI9mbejKeXEGr8SckuLnrQPGe3oJN5c3K0vpoU9q/wCQ==",
       "dependencies": [
         "@vue/compiler-dom",
@@ -528,7 +528,7 @@
         "npm:@tauri-apps/cli@2",
         "npm:@tauri-apps/plugin-opener@2",
         "npm:@vitejs/plugin-vue@^5.2.1",
-        "npm:typescript@~5.6.2",
+        "npm:typescript@^5.8.3",
         "npm:vite@^6.0.3",
         "npm:vue-tsc@^2.1.10",
         "npm:vue@^3.5.13"
