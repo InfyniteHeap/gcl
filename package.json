@@ -15,10 +15,10 @@
     "@tauri-apps/plugin-os": "^2"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^5",
+    "@vitejs/plugin-vue": "^6",
     "typescript": "^5",
-    "vite": "^6",
-    "vue-tsc": "^2",
+    "vite": "^7",
+    "vue-tsc": "^3",
     "@tauri-apps/cli": "^2"
   }
 }
