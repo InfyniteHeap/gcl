@@ -1,9 +1,14 @@
 <script setup lang="ts">
+import { disableFunctionKeys, disableMouseButtons } from "./disable-inputs";
+
 import { ref } from "vue";
 import { invoke } from "@tauri-apps/api/core";
 
 const greetMsg = ref("");
 const name = ref("");
+
+disableFunctionKeys();
+disableMouseButtons();
 
 async function greet() {
   // Learn more about Tauri commands at https://tauri.app/develop/calling-rust/
@@ -29,7 +34,7 @@ async function greet() {
     <p>Click on the Tauri, Vite, and Vue logos to learn more.</p>
 
     <form class="row" @submit.prevent="greet">
-      <input id="greet-input" v-model="name" placeholder="Enter a name..." />
+      <input id="greet-input" v-model="name" autocomplete="off" spellcheck="false" placeholder="Enter a name..." />
       <button type="submit">Greet</button>
     </form>
     <p>{{ greetMsg }}</p>
@@ -47,6 +52,8 @@ async function greet() {
 </style>
 <style>
 :root {
+  user-select: none;
+
   font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
   font-size: 16px;
   line-height: 24px;
