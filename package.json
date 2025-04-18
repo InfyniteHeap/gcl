@@ -18,7 +18,7 @@
     "@vitejs/plugin-vue": "^5",
     "typescript": "^5",
     "vite": "^6",
-    "vue-tsc": "^2",
+    "vue-tsc": "^3.0.0-alpha.8",
     "@tauri-apps/cli": "^2"
   }
 }
