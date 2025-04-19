@@ -20,7 +20,7 @@ impl EnableWindowVibrancy for Window {
             // Windows 10 v1809 to 22H2
             OsVersion {
                 major: 10,
-                build: _b @ 17763..19045,
+                build: _b @ 17763..=19045,
                 ..
             } => window_vibrancy::apply_acrylic(ww, Some((18, 18, 18, 125))),
             // Windows 10 v1803 and earlier
