@@ -4,11 +4,11 @@
     "npm:@tauri-apps/api@2": "2.5.0",
     "npm:@tauri-apps/cli@2": "2.5.0",
     "npm:@tauri-apps/plugin-opener@2": "2.2.6",
-    "npm:@vitejs/plugin-vue@^5.2.1": "5.2.3_vite@6.3.2__picomatch@4.0.2_vue@3.5.13__typescript@5.8.3_typescript@5.8.3",
-    "npm:typescript@^5.8.3": "5.8.3",
-    "npm:vite@^6.0.3": "6.3.2_picomatch@4.0.2",
-    "npm:vue-tsc@^2.1.10": "2.2.8_typescript@5.8.3",
-    "npm:vue@^3.5.13": "3.5.13_typescript@5.8.3"
+    "npm:@vitejs/plugin-vue@5": "5.2.3_vite@6.3.2__picomatch@4.0.2_vue@3.5.13__typescript@5.8.3_typescript@5.8.3",
+    "npm:typescript@5": "5.8.3",
+    "npm:vite@6": "6.3.2_picomatch@4.0.2",
+    "npm:vue-tsc@2": "2.2.8_typescript@5.8.3",
+    "npm:vue@3": "3.5.13_typescript@5.8.3"
   },
   "npm": {
     "@babel/helper-string-parser@7.25.9": {
@@ -527,11 +527,11 @@
         "npm:@tauri-apps/api@2",
         "npm:@tauri-apps/cli@2",
         "npm:@tauri-apps/plugin-opener@2",
-        "npm:@vitejs/plugin-vue@^5.2.1",
-        "npm:typescript@^5.8.3",
-        "npm:vite@^6.0.3",
-        "npm:vue-tsc@^2.1.10",
-        "npm:vue@^3.5.13"
+        "npm:@vitejs/plugin-vue@5",
+        "npm:typescript@5",
+        "npm:vite@6",
+        "npm:vue-tsc@2",
+        "npm:vue@3"
       ]
     }
   }
