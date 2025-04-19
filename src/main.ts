@@ -1,4 +1,10 @@
-import { createApp } from "vue";
 import App from "./App.vue";
 
+import { createApp } from "vue";
+import { invoke } from "@tauri-apps/api/core";
+
 createApp(App).mount("#app");
+
+globalThis.addEventListener("load", async () => {
+  await invoke("show_window");
+});
