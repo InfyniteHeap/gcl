@@ -1,32 +1,62 @@
-# Tauri + Vue + TypeScript
+# Grid Craft Launcher
 
-This template should help get you started developing with Vue 3 and TypeScript
-in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the
-[script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup)
-to learn more.
+> This project is under development at present.
 
-## Recommended IDE Setup
+Grid Craft Launcher (aka GCL) is a beautiful, fast and memory-safety Minecraft
+launcher.
 
-- [VS Code](https://code.visualstudio.com/) +
-  [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) +
-  [Tauri](https://marketplace.visualstudio.com/items?itemName=tauri-apps.tauri-vscode) +
-  [rust-analyzer](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer)
+> [!IMPORTANT]
+> This project uses [Tauri](https://tauri.app/) as its framework. This means
+> that it doesn't ship with a Chromium core (contrary to what Electron does),
+> and uses an existing WebView runtime instead. If your computer doesn't have a
+> WebView runtime, you can't successfully run GCL.
 
-## Type Support For `.vue` Imports in TS
+## Features
 
-Since TypeScript cannot handle type information for `.vue` imports, they are
-shimmed to be a generic Vue component type by default. In most cases this is
-fine if you don't really care about component prop types outside of templates.
-However, if you wish to get actual prop types in `.vue` imports (for example to
-get props validation when using manual `h(...)` calls), you can enable Volar's
-Take Over mode by following these steps:
+- Fast, light-weight and memory safe!
+- No historical burdens!
+- Friendly to users!
 
-1. Run `Extensions: Show Built-in Extensions` from VS Code's command palette,
-   look for `TypeScript and JavaScript Language Features`, then right click and
-   select `Disable (Workspace)`. By default, Take Over mode will enable itself
-   if the default TypeScript extension is disabled.
-2. Reload the VS Code window by running `Developer: Reload Window` from the
-   command palette.
+## Build from Source
 
-You can learn more about Take Over mode
-[here](https://github.com/johnsoncodehk/volar/discussions/471).
+### Prerequisites
+
+- **Rust**: This project is chiefly written in Rust. Its installation method can
+  be found [here](https://www.rust-lang.org/tools/install/).
+- **Deno**: This project uses Deno as its package manager. Its
+  [official website](https://deno.com/) includes the commands that install it on
+  your computer.
+
+### Clone Repo
+
+```bash
+git clone https://github.com/InfyniteHeap/gcl.git
+```
+
+> [!TIP]
+> If you only want to build this project, add `--depth 1` to avoid cloing whole
+> commit histories.
+
+### Install Packages
+
+Enter in `gcl` folder, and run this command:
+
+```bash
+deno install
+```
+
+### Run Development Server
+
+```bash
+deno task tauri dev
+```
+
+### Build
+
+```bash
+deno task tauri build
+```
+
+## License
+
+This software is distrubuted under GPL-3.0 license.
