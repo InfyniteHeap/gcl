@@ -1,16 +1,28 @@
+export function disableKeyboardShortcuts() {
+  addEventListener("keydown", (event) => {
+    if (
+      ((event.ctrlKey || event.metaKey) &&
+        ["f", "g", "j", "p", "r", "u"].includes(event.key)) ||
+      (event.altKey && ["ArrowLeft", "ArrowRight"].includes(event.key))
+    ) {
+      event.preventDefault();
+    }
+  });
+}
+
 export function disableFunctionKeys() {
-  onkeydown = (event) => {
+  addEventListener("keydown", (event) => {
     if (/^(F[1-9]|F1[0-2])$/.test(event.key)) {
       event.preventDefault();
     }
-  };
+  });
 }
 
 export function disableMouseButtons() {
-  onauxclick = (event) => {
+  addEventListener("auxclick", (event) => {
     event.preventDefault();
-  };
-  oncontextmenu = (event) => {
+  });
+  addEventListener("contextmenu", (event) => {
     event.preventDefault();
-  };
+  });
 }

@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { disableFunctionKeys, disableMouseButtons } from "./disable-inputs";
+import { disableKeyboardShortcuts, disableFunctionKeys, disableMouseButtons } from "./disable-inputs";
 
+disableKeyboardShortcuts();
 disableFunctionKeys();
 disableMouseButtons();
 </script>
