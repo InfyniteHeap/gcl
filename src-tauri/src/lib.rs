@@ -10,6 +10,7 @@ pub fn run() {
     tauri::Builder::default()
         .setup(vibrancy::enable_window_vibrancy)
         .plugin(tauri_plugin_opener::init())
+        .plugin(tauri_plugin_os::init())
         .invoke_handler(tauri::generate_handler![show_window])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
