@@ -5,6 +5,6 @@ import { invoke } from "@tauri-apps/api/core";
 
 createApp(App).mount("#app");
 
-addEventListener("load", async () => {
+onload = async () => {
   await invoke("show_window");
-});
+};

@@ -1,10 +1,9 @@
 <script setup lang="ts">
-import { disableKeyboardShortcuts, disableFunctionKeys, disableMouseButtons } from "./disable-inputs";
+import { disableKeyboardShortcuts, disableMouseButtons } from "./disable-inputs";
 
 import { platform } from "@tauri-apps/plugin-os";
 
 disableKeyboardShortcuts();
-disableFunctionKeys();
 disableMouseButtons();
 
 // We've set the background color of client area to transparent to apply window vibrancy effect.
