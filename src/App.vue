@@ -1,5 +1,8 @@
 <script setup lang="ts">
-import { disableKeyboardShortcuts, disableMouseButtons } from "./disable-inputs";
+import {
+  disableKeyboardShortcuts,
+  disableMouseButtons,
+} from "./disable-inputs";
 
 import { platform } from "@tauri-apps/plugin-os";
 
@@ -22,8 +25,7 @@ if (!["macos", "windows"].includes(platform())) {
 }
 </script>
 
-<template>
-</template>
+<template></template>
 
 <style>
 :root {
