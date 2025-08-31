@@ -2,7 +2,7 @@
   "$schema": "https://schema.tauri.app/config/2",
   "productName": "gcl",
   "version": "0.1.0",
-  "identifier": "com.gcl.app",
+  "identifier": "com.infyniteheap.gcl",
   "build": {
     "beforeDevCommand": "deno task dev",
     "devUrl": "http://localhost:1420",
