@@ -38,7 +38,7 @@ git clone https://github.com/InfyniteHeap/gcl.git
 > cloning repo onto Windows computer. Generally, this is no problem because it
 > guarantees that Windows developers can work well with developers who are using
 > other systems (see
-> [this doc](https://git-scm.com/book/en/v2/Customizing-Git-Git-Configuration/)
+> [this doc](https://git-scm.com/book/en/v2/Customizing-Git-Git-Configuration)
 > for more details).
 >
 > But since we use Deno to format our code, things have become a little
