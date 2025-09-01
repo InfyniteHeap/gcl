@@ -5,20 +5,22 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc --noEmit && vite build",
+    "build": "tsc && vite build",
     "preview": "vite preview",
     "tauri": "tauri"
   },
   "dependencies": {
-    "vue": "^3",
+    "react": "^19",
+    "react-dom": "^19",
     "@tauri-apps/api": "^2",
     "@tauri-apps/plugin-os": "^2"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^6",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "@vitejs/plugin-react": "^5",
     "typescript": "^5",
     "vite": "^7",
-    "vue-tsc": "^3",
     "@tauri-apps/cli": "^2"
   }
 }
