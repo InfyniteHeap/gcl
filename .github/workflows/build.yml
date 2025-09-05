@@ -14,7 +14,6 @@ jobs:
           ubuntu-latest,
           ubuntu-24.04-arm,
           windows-latest,
-          windows-11-arm,
           macos-latest,
         ]
 
@@ -26,7 +25,7 @@ jobs:
           fetch-depth: 0
 
       - name: Install Prerequisites on Ubuntu
-        if: matrix.os == 'ubuntu-latest'
+        if: matrix.os == 'ubuntu-latest' || matrix.os == 'ubuntu-24.04-arm'
         run: |
           sudo apt update
           sudo apt upgrade
