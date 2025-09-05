@@ -21,7 +21,7 @@ jobs:
 
       - name: Install Prerequisites on ubuntu
         if: matrix.os == "ubuntu-latest"
-        runs: |
+        run: |
           sudo apt update
           sudo apt upgrade
           sudo apt install libwebkit2gtk-4.1-dev \
