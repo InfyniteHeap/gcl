@@ -56,7 +56,7 @@ jobs:
             ~/.cache/deno
             ~/AppData/Local/deno
             ~/Library/Caches/deno
-          key: ${{ runner.os }}-deno-${{ hashFiles('**/deps.ts') }}
+          key: ${{ runner.os }}-deno-${{ hashFiles('**/deno.lock') }}
 
       - name: Install Packages
         run: deno install
