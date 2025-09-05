@@ -19,6 +19,21 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Install Prerequisites on ubuntu
+        if: matrix.os == "ubuntu-latest"
+        runs: |
+          sudo apt update
+          sudo apt upgrade
+          sudo apt install libwebkit2gtk-4.1-dev \
+          build-essential \
+          curl \
+          wget \
+          file \
+          libxdo-dev \
+          libssl-dev \
+          libayatana-appindicator3-dev \
+          librsvg2-dev
+
       - name: Install Deno
         uses: denoland/setup-deno@v2
 
