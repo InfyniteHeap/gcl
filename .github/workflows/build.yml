@@ -10,12 +10,7 @@ jobs:
   build:
     strategy:
       matrix:
-        os: [
-          ubuntu-latest,
-          ubuntu-24.04-arm,
-          windows-latest,
-          macos-latest,
-        ]
+        os: [ubuntu-latest, windows-latest, macos-latest]
 
     runs-on: ${{ matrix.os }}
 
@@ -56,8 +51,13 @@ jobs:
       - name: Cache Deno Dependencies
         uses: actions/cache@v4
         with:
-          path: ~/.deno
-          key: ${{ runner.os }}-deno-${{ hashFiles('**/deno.lock') }}
+          path: |
+            ~/.deno
+            ~\.deno
+            ~/.cache/deno
+            ~\AppData\Local\deno
+            ~/Library/Caches/deno
+          key: ${{ runner.os }}-deno-${{ hashFiles('**/deps.ts') }}
 
       - name: Install Packages
         run: deno install
