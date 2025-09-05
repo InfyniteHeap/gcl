@@ -20,7 +20,7 @@ jobs:
           fetch-depth: 0
 
       - name: Install Prerequisites on Ubuntu
-        if: matrix.os == 'ubuntu-latest' || matrix.os == 'ubuntu-24.04-arm'
+        if: matrix.os == 'ubuntu-latest'
         run: |
           sudo apt update
           sudo apt upgrade
@@ -53,9 +53,8 @@ jobs:
         with:
           path: |
             ~/.deno
-            ~\.deno
             ~/.cache/deno
-            ~\AppData\Local\deno
+            ~/AppData/Local/deno
             ~/Library/Caches/deno
           key: ${{ runner.os }}-deno-${{ hashFiles('**/deps.ts') }}
 
