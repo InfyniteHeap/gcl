@@ -1,0 +1,28 @@
+name: Build GCL
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - name: Install Deno
+        run: denoland/setup-deno@v2
+
+      - name: Verify Formatting
+        run: deno fmt --check
+
+      - name: Install Packages
+        run: deno install
+
+      - name: Build Project
+        run: deno task tauri build
