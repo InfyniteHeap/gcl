@@ -16,7 +16,7 @@ jobs:
           fetch-depth: 0
 
       - name: Install Deno
-        run: denoland/setup-deno@v2
+        uses: denoland/setup-deno@v2
 
       - name: Verify Formatting
         run: deno fmt --check
