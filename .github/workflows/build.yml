@@ -19,23 +19,40 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Install Prerequisites on ubuntu
+      - name: Install Prerequisites on Ubuntu
         if: matrix.os == 'ubuntu-latest'
         run: |
           sudo apt update
           sudo apt upgrade
           sudo apt install libwebkit2gtk-4.1-dev \
-          build-essential \
-          curl \
-          wget \
-          file \
-          libxdo-dev \
-          libssl-dev \
-          libayatana-appindicator3-dev \
-          librsvg2-dev
+            build-essential \
+            curl \
+            wget \
+            file \
+            libxdo-dev \
+            libssl-dev \
+            libayatana-appindicator3-dev \
+            librsvg2-dev
+
+      - name: Cache Rust Dependencies
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cargo/bin/
+            ~/.cargo/registry/index/
+            ~/.cargo/registry/cache/
+            ~/.cargo/git/db/
+            target/
+          key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
 
       - name: Install Deno
         uses: denoland/setup-deno@v2
+
+      - name: Cache Deno Dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.deno
+          key: ${{ runner.os }}-deno-${{ hashFiles('**/deno.lock') }}
 
       - name: Install Packages
         run: deno install
