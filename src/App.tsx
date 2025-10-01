@@ -8,8 +8,10 @@ import {
 import "./App.css";
 
 function App() {
-  disableKeyboardShortcuts();
-  disableMouseButtons();
+  if (location.hostname === "tauri.localhost") {
+    disableKeyboardShortcuts();
+    disableMouseButtons();
+  }
 
   // We've set the background color of client area to transparent to apply window vibrancy effect.
   // On MacOS and Windows, this area can be correctly handled by their DWM, which will
