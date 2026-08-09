@@ -1,6 +1,6 @@
 # AI Policy
 
-Using AI to contribute to this project is welcome! However, you must follow some extra policy below.
+Using AI to contribute to this project is welcome! However, you must follow some extra rules below.
 
 - **AI should not be used to generate comments when communicating with maintainers**. We expect comments on our projects to be written by humans. We may hide any comments that we believe are AI generated.
 - If you're opening an issue, **use your own words to describe concrete problem.**
