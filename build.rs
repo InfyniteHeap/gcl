@@ -1,11 +1,11 @@
 fn main() {
     #[cfg(all(target_os = "windows", target_env = "msvc"))]
-    set_windows_exe_options();
+    embed_windows_manifest();
 }
 
 /// Embed a Windows manifest and set some linker options.
 #[cfg(all(target_os = "windows", target_env = "msvc"))]
-fn set_windows_exe_options() {
+fn embed_windows_manifest() {
     static MANIFEST: &str = "res\\gcl.exe.manifest";
 
     let Ok(mut manifest) = std::env::current_dir() else {
