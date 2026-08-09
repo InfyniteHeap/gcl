@@ -5,7 +5,7 @@
         type="win32"
         name="InfyniteHeap.gcl"
         processorArchitecture="*"
-        version="0.1.0.0"
+        version="{{VERSION}}"
     />
 
     <dependency>

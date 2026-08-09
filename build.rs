@@ -1,26 +1,93 @@
+const COMPANY_NAME: &str = "InfyniteHeap";
+const FILE_DESCRIPTION: &str = "A beautiful, fast and memory-safe Minecraft launcher.";
+const BINARY_NAME: &str = "gcl";
+const PRODUCT_NAME: &str = "Grid Craft Launcher";
+
 fn main() {
     #[cfg(all(target_os = "windows", target_env = "msvc"))]
-    embed_windows_manifest();
+    embed_resources();
+    #[cfg(not(all(target_os = "windows", target_env = "msvc")))]
+    compile_error!("This project must be built on Windows with MSVC toolchain!");
 }
 
-/// Embed a Windows manifest and set some linker options.
 #[cfg(all(target_os = "windows", target_env = "msvc"))]
-fn embed_windows_manifest() {
-    static MANIFEST: &str = "res\\gcl.exe.manifest";
+fn embed_resources() {
+    println!("cargo:rerun-if-changed=res/gcl.exe.manifest");
+    println!("cargo:rerun-if-env-changed=CARGO_PKG_VERSION");
 
-    let Ok(mut manifest) = std::env::current_dir() else {
-        return;
-    };
-    manifest.push(MANIFEST);
-    let Some(manifest) = manifest.to_str() else {
-        return;
+    let version = std::env::var("CARGO_PKG_VERSION").unwrap_or_else(|_| "0.0.0".into());
+    let out_dir = std::env::var("OUT_DIR").expect("OUT_DIR not set");
+
+    build_manifest(&version, &out_dir);
+    let rc_path = build_resource_file(&version, &out_dir);
+
+    embed_resource::compile(rc_path, embed_resource::NONE)
+        .manifest_required()
+        .unwrap();
+}
+
+#[cfg(all(target_os = "windows", target_env = "msvc"))]
+fn build_manifest(version: &str, out_dir: &str) {
+    let mut parts = version.split('.').collect::<Vec<&str>>();
+    while parts.len() < 4 {
+        parts.push("0");
+    }
+    parts.truncate(4);
+
+    let raw_manifest = std::fs::read_to_string("res/gcl.exe.manifest")
+        .expect("failed to read res/gcl.exe.manifest");
+    let manifest = raw_manifest.replace("{{VERSION}}", &parts.join("."));
+
+    let manifest_path = std::path::Path::new(out_dir).join("gcl.exe.manifest");
+    std::fs::write(&manifest_path, manifest).expect("failed to write generated gcl.exe.manifest");
+}
+
+#[cfg(all(target_os = "windows", target_env = "msvc"))]
+fn build_resource_file(version: &str, out_dir: &str) -> std::path::PathBuf {
+    let file_version = version.replace('.', ",");
+    let file_flags = match std::env::var("PROFILE") {
+        Ok(p) if p == "debug" => "VS_FF_DEBUG",
+        _ => "0",
     };
 
-    println!("cargo:rerun-if-changed={MANIFEST}");
-    // Embed the Windows application manifest file.
-    println!("cargo:rustc-link-arg-bin=gcl=/MANIFEST:EMBED");
-    println!("cargo:rustc-link-arg-bin=gcl=/MANIFESTINPUT:{manifest}");
-    // Turn linker warnings into errors. Helps debugging, otherwise the
-    // warnings get squashed.
-    println!("cargo:rustc-link-arg-bin=gcl=/WX");
+    let raw_rc = format!(
+        r#"#include <winres.h>
+
+CREATEPROCESS_MANIFEST_RESOURCE_ID RT_MANIFEST "gcl.exe.manifest"
+
+VS_VERSION_INFO VERSIONINFO
+FILEVERSION     {file_version}
+PRODUCTVERSION  {file_version}
+FILEFLAGSMASK   VS_FFI_FILEFLAGSMASK
+FILEFLAGS       {file_flags}
+FILEOS          VOS_NT_WINDOWS32
+FILETYPE        VFT_APP
+FILESUBTYPE     VFT2_UNKNOWN
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904B0"
+        BEGIN
+            VALUE "CompanyName",      "{COMPANY_NAME}"
+            VALUE "FileDescription",  "{FILE_DESCRIPTION}"
+            VALUE "FileVersion",      "{version}"
+            VALUE "InternalName",     "{BINARY_NAME}"
+            VALUE "OriginalFilename", "{BINARY_NAME}.exe"
+            VALUE "ProductName",      "{PRODUCT_NAME}"
+            VALUE "ProductVersion",   "{version}"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x0409, 1200
+    END
+END
+"#
+    );
+    let rc = format!("\u{FEFF}{raw_rc}");
+
+    let rc_path = std::path::Path::new(out_dir).join("gcl.rc");
+    std::fs::write(&rc_path, rc).expect("failed to write generated gcl.rc");
+
+    rc_path
 }
