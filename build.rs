@@ -3,6 +3,37 @@ const FILE_DESCRIPTION: &str = "A beautiful, fast and memory-safe Minecraft laun
 const BINARY_NAME: &str = "gcl";
 const PRODUCT_NAME: &str = "Grid Craft Launcher";
 
+#[cfg(all(target_os = "windows", target_env = "msvc"))]
+fn parse_version(version: &str) -> Vec<String> {
+    let mut parts = Vec::new();
+
+    'outer: for part in version.split('.') {
+        let mut digits = 0;
+        for c in part.chars() {
+            if !c.is_ascii_digit() {
+                parts.push(part[..digits].to_string());
+
+                break 'outer;
+            } else {
+                digits += 1;
+            }
+        }
+
+        if !part.is_empty() {
+            parts.push(part.to_string());
+            if parts.len() == 4 {
+                break;
+            }
+        }
+    }
+
+    while parts.len() < 4 {
+        parts.push("0".into());
+    }
+
+    parts
+}
+
 fn main() {
     #[cfg(all(target_os = "windows", target_env = "msvc"))]
     embed_resources();
@@ -28,15 +59,9 @@ fn embed_resources() {
 
 #[cfg(all(target_os = "windows", target_env = "msvc"))]
 fn build_manifest(version: &str, out_dir: &str) {
-    let mut parts = version.split('.').collect::<Vec<&str>>();
-    while parts.len() < 4 {
-        parts.push("0");
-    }
-    parts.truncate(4);
-
     let raw_manifest = std::fs::read_to_string("res/gcl.exe.manifest")
         .expect("failed to read res/gcl.exe.manifest");
-    let manifest = raw_manifest.replace("{{VERSION}}", &parts.join("."));
+    let manifest = raw_manifest.replace("{{VERSION}}", &parse_version(version).join("."));
 
     let manifest_path = std::path::Path::new(out_dir).join("gcl.exe.manifest");
     std::fs::write(&manifest_path, manifest).expect("failed to write generated gcl.exe.manifest");
@@ -44,7 +69,7 @@ fn build_manifest(version: &str, out_dir: &str) {
 
 #[cfg(all(target_os = "windows", target_env = "msvc"))]
 fn build_resource_file(version: &str, out_dir: &str) -> std::path::PathBuf {
-    let file_version = version.replace('.', ",");
+    let file_version = parse_version(version).join(",");
     let file_flags = match std::env::var("PROFILE") {
         Ok(p) if p == "debug" => "VS_FF_DEBUG",
         _ => "0",
