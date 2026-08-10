@@ -1,6 +1,6 @@
 const COMPANY_NAME: &str = "InfyniteHeap";
 const FILE_DESCRIPTION: &str = "A beautiful, fast and memory-safe Minecraft launcher.";
-const BINARY_NAME: &str = "gcl";
+const BINARY_NAME: &str = "GCL";
 const PRODUCT_NAME: &str = "Grid Craft Launcher";
 
 #[cfg(all(target_os = "windows", target_env = "msvc"))]
