@@ -46,7 +46,7 @@ fn embed_resources() {
     println!("cargo:rerun-if-changed=res/gcl.exe.manifest");
     println!("cargo:rerun-if-env-changed=CARGO_PKG_VERSION");
 
-    let version = std::env::var("CARGO_PKG_VERSION").unwrap_or_else(|_| "0.0.0".into());
+    let version = std::env::var("CARGO_PKG_VERSION").unwrap_or("0.0.0".into());
     let out_dir = std::env::var("OUT_DIR").expect("OUT_DIR not set");
 
     build_manifest(&version, &out_dir);
