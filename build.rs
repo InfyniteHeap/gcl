@@ -49,6 +49,7 @@ fn embed_resources() {
     let out_dir = std::env::var("OUT_DIR").expect("OUT_DIR not set");
 
     build_manifest(&version, &out_dir);
+    build_icon(&out_dir);
     let rc_path = build_resource_file(&version, &out_dir);
 
     embed_resource::compile(rc_path, embed_resource::NONE)
@@ -66,6 +67,14 @@ fn build_manifest(version: &str, out_dir: &str) {
 }
 
 #[cfg(all(target_os = "windows", target_env = "msvc"))]
+fn build_icon(out_dir: &str) {
+    let raw_icon = include_bytes!("assets/logo.ico");
+
+    let icon_path = std::path::Path::new(out_dir).join("logo.ico");
+    std::fs::write(&icon_path, raw_icon).expect("failed to write generated logo.ico");
+}
+
+#[cfg(all(target_os = "windows", target_env = "msvc"))]
 fn build_resource_file(version: &str, out_dir: &str) -> std::path::PathBuf {
     let file_version = parse_version(version).join(",");
     let file_flags = match std::env::var("PROFILE") {
@@ -77,6 +86,7 @@ fn build_resource_file(version: &str, out_dir: &str) -> std::path::PathBuf {
         r#"#include <winres.h>
 
 CREATEPROCESS_MANIFEST_RESOURCE_ID RT_MANIFEST "gcl.exe.manifest"
+MAINICON ICON "logo.ico"
 
 VS_VERSION_INFO VERSIONINFO
 FILEVERSION     {file_version}
