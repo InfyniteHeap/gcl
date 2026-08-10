@@ -43,7 +43,6 @@ fn main() {
 
 #[cfg(all(target_os = "windows", target_env = "msvc"))]
 fn embed_resources() {
-    println!("cargo:rerun-if-changed=res/gcl.exe.manifest");
     println!("cargo:rerun-if-env-changed=CARGO_PKG_VERSION");
 
     let version = std::env::var("CARGO_PKG_VERSION").unwrap_or("0.0.0".into());
@@ -59,8 +58,7 @@ fn embed_resources() {
 
 #[cfg(all(target_os = "windows", target_env = "msvc"))]
 fn build_manifest(version: &str, out_dir: &str) {
-    let raw_manifest = std::fs::read_to_string("res/gcl.exe.manifest")
-        .expect("failed to read res/gcl.exe.manifest");
+    let raw_manifest = include_str!("res/gcl.exe.manifest");
     let manifest = raw_manifest.replace("{{VERSION}}", &parse_version(version).join("."));
 
     let manifest_path = std::path::Path::new(out_dir).join("gcl.exe.manifest");
