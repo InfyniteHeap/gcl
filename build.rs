@@ -82,42 +82,15 @@ fn build_resource_file(version: &str, out_dir: &str) -> std::path::PathBuf {
         _ => "0",
     };
 
-    let raw_rc = format!(
-        r#"#include <winres.h>
-
-CREATEPROCESS_MANIFEST_RESOURCE_ID RT_MANIFEST "gcl.exe.manifest"
-MAINICON ICON "logo.ico"
-
-VS_VERSION_INFO VERSIONINFO
-FILEVERSION     {file_version}
-PRODUCTVERSION  {file_version}
-FILEFLAGSMASK   VS_FFI_FILEFLAGSMASK
-FILEFLAGS       {file_flags}
-FILEOS          VOS_NT_WINDOWS32
-FILETYPE        VFT_APP
-FILESUBTYPE     VFT2_UNKNOWN
-BEGIN
-    BLOCK "StringFileInfo"
-    BEGIN
-        BLOCK "040904B0"
-        BEGIN
-            VALUE "CompanyName",      "{COMPANY_NAME}"
-            VALUE "FileDescription",  "{FILE_DESCRIPTION}"
-            VALUE "FileVersion",      "{version}"
-            VALUE "InternalName",     "{BINARY_NAME}"
-            VALUE "OriginalFilename", "{BINARY_NAME}.exe"
-            VALUE "ProductName",      "{PRODUCT_NAME}"
-            VALUE "ProductVersion",   "{version}"
-        END
-    END
-    BLOCK "VarFileInfo"
-    BEGIN
-        VALUE "Translation", 0x0409, 1200
-    END
-END
-"#
-    );
-    let rc = format!("\u{FEFF}{raw_rc}");
+    let raw_rc = include_str!("res/gcl.rc");
+    let rc = format!("\u{FEFF}{raw_rc}")
+        .replace("{{FILE_VERSION}}", &file_version)
+        .replace("{{FILE_FLAGS}}", file_flags)
+        .replace("{{COMPANY_NAME}}", COMPANY_NAME)
+        .replace("{{FILE_DESCRIPTION}}", FILE_DESCRIPTION)
+        .replace("{{BINARY_NAME}}", BINARY_NAME)
+        .replace("{{PRODUCT_NAME}}", PRODUCT_NAME)
+        .replace("{{VERSION}}", version);
 
     let rc_path = std::path::Path::new(out_dir).join("gcl.rc");
     std::fs::write(&rc_path, rc).expect("failed to write generated gcl.rc");
