@@ -1,6 +1,7 @@
 const COMPANY_NAME: &str = "InfyniteHeap";
 const FILE_DESCRIPTION: &str = "A beautiful, fast and memory-safe Minecraft launcher.";
 const BINARY_NAME: &str = "GCL";
+const LEGAL_COPYRIGHT: &str = "Copyright \u{00A9} 2024-present InfyniteHeap.";
 const PRODUCT_NAME: &str = "Grid Craft Launcher";
 
 #[cfg(all(target_os = "windows", target_env = "msvc"))]
@@ -93,6 +94,7 @@ fn build_resource_file(version: &str, out_dir: &str) -> std::path::PathBuf {
         .replace("{{COMPANY_NAME}}", COMPANY_NAME)
         .replace("{{FILE_DESCRIPTION}}", FILE_DESCRIPTION)
         .replace("{{BINARY_NAME}}", BINARY_NAME)
+        .replace("{{LEGAL_COPYRIGHT}}", LEGAL_COPYRIGHT)
         .replace("{{PRODUCT_NAME}}", PRODUCT_NAME)
         .replace("{{VERSION}}", version);
 

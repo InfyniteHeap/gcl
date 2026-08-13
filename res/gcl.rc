@@ -20,6 +20,7 @@ BEGIN
             VALUE "FileDescription",  "{{FILE_DESCRIPTION}}"
             VALUE "FileVersion",      "{{VERSION}}"
             VALUE "InternalName",     "{{BINARY_NAME}}"
+            VALUE "LegalCopyright",   "{{LEGAL_COPYRIGHT}}"
             VALUE "OriginalFilename", "{{BINARY_NAME}}.exe"
             VALUE "ProductName",      "{{PRODUCT_NAME}}"
             VALUE "ProductVersion",   "{{VERSION}}"
