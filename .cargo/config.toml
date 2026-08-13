@@ -1,4 +1,3 @@
-[target.x86_64-pc-windows-msvc]
-rustflags = ["-C", "target-feature=+crt-static"]
-[target.aarch64-pc-windows-msvc]
+[target.'cfg(all(target_os = "windows", target_env = "msvc"))']
+linker = "rust-lld"
 rustflags = ["-C", "target-feature=+crt-static"]
