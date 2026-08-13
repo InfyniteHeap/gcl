@@ -76,9 +76,13 @@ fn build_icon(out_dir: &str) {
 
 #[cfg(all(target_os = "windows", target_env = "msvc"))]
 fn build_resource_file(version: &str, out_dir: &str) -> std::path::PathBuf {
+    let is_pre_release = version.split('+').next().unwrap_or_default().contains('-');
+
     let file_version = parse_version(version).join(",");
-    let file_flags = match std::env::var("PROFILE") {
-        Ok(p) if p == "debug" => "VS_FF_DEBUG",
+    let file_flags = match (std::env::var("PROFILE").as_deref(), is_pre_release) {
+        (Ok("debug"), true) => "VS_FF_DEBUG | VS_FF_PRERELEASE",
+        (Ok("debug"), false) => "VS_FF_DEBUG",
+        (_, true) => "VS_FF_PRERELEASE",
         _ => "0",
     };
 
