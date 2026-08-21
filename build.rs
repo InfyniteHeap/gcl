@@ -5,14 +5,14 @@ const LEGAL_COPYRIGHT: &str = "Copyright \u{00A9} 2024-present InfyniteHeap.";
 const PRODUCT_NAME: &str = "Grid Craft Launcher";
 
 #[cfg(all(target_os = "windows", target_env = "msvc"))]
-fn parse_version(version: &str) -> Vec<String> {
+fn parse_version(version: &str) -> Vec<&str> {
     let mut parts = Vec::new();
 
     'outer: for part in version.split('.') {
         let mut digits = 0;
         for c in part.chars() {
             if !c.is_ascii_digit() {
-                parts.push(part[..digits].to_string());
+                parts.push(&part[..digits]);
 
                 break 'outer;
             } else {
@@ -21,7 +21,7 @@ fn parse_version(version: &str) -> Vec<String> {
         }
 
         if !part.is_empty() {
-            parts.push(part.to_string());
+            parts.push(part);
             if parts.len() == 4 {
                 break;
             }
@@ -29,7 +29,7 @@ fn parse_version(version: &str) -> Vec<String> {
     }
 
     while parts.len() < 4 {
-        parts.push("0".into());
+        parts.push("0");
     }
 
     parts
