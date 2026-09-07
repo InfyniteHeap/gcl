@@ -32,7 +32,11 @@ fn parse_version(version: &str) -> [&str; 4] {
 
 fn main() {
     #[cfg(all(target_os = "windows", target_env = "msvc"))]
-    embed_resources();
+    {
+        windows_reactor_setup::as_self_contained();
+        // FIXME: Manifest linking confilct.
+        // embed_resources();
+    }
     #[cfg(not(all(target_os = "windows", target_env = "msvc")))]
     compile_error!("This project must be built on Windows with MSVC toolchain!");
 }

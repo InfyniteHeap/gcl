@@ -8,9 +8,11 @@ name = "GCL"
 path = "src/main.rs"
 
 [dependencies]
+windows-reactor = "0.100"
 
 [build-dependencies]
 embed-resource = "3"
+windows-reactor-setup = "0.100"
 
 [profile.dev]
 incremental = true
