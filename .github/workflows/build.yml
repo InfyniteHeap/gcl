@@ -6,60 +6,17 @@ on:
   pull_request:
     branches: ["main"]
 
+env:
+  CARGO_TERM_COLOR: always
+
 jobs:
   build:
+    runs-on: windows-latest
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
-
-    runs-on: ${{ matrix.os }}
+        target: ["x86_64-pc-windows-msvc", "aarch64-pc-windows-msvc"]
 
     steps:
-      - uses: actions/checkout@v5
-        with:
-          fetch-depth: 0
-
-      - name: Install Prerequisites on Ubuntu
-        if: matrix.os == 'ubuntu-latest'
-        run: |
-          sudo apt update
-          sudo apt upgrade
-          sudo apt install libwebkit2gtk-4.1-dev \
-            build-essential \
-            curl \
-            wget \
-            file \
-            libxdo-dev \
-            libssl-dev \
-            libayatana-appindicator3-dev \
-            librsvg2-dev
-
-      - name: Cache Rust Dependencies
-        uses: actions/cache@v4
-        with:
-          path: |
-            ~/.cargo/bin/
-            ~/.cargo/registry/index/
-            ~/.cargo/registry/cache/
-            ~/.cargo/git/db/
-            target/
-          key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
-
-      - name: Install Deno
-        uses: denoland/setup-deno@v2
-
-      - name: Cache Deno Dependencies
-        uses: actions/cache@v4
-        with:
-          path: |
-            ~/.deno
-            ~/.cache/deno
-            ~/AppData/Local/deno
-            ~/Library/Caches/deno
-          key: ${{ runner.os }}-deno-${{ hashFiles('**/deno.lock') }}
-
-      - name: Install Packages
-        run: deno install
-
-      - name: Build Project
-        run: deno task tauri build
+      - uses: actions/checkout@v7
+      - name: Build
+        run: cargo build --target ${{ matrix.target }} --verbose
