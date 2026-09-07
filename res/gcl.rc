@@ -1,0 +1,33 @@
+#include <winres.h>
+
+CREATEPROCESS_MANIFEST_RESOURCE_ID RT_MANIFEST "gcl.exe.manifest"
+MAINICON ICON "logo.ico"
+
+VS_VERSION_INFO VERSIONINFO
+FILEVERSION     {{FILE_VERSION}}
+PRODUCTVERSION  {{FILE_VERSION}}
+FILEFLAGSMASK   VS_FFI_FILEFLAGSMASK
+FILEFLAGS       {{FILE_FLAGS}}
+FILEOS          VOS_NT_WINDOWS32
+FILETYPE        VFT_APP
+FILESUBTYPE     VFT2_UNKNOWN
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904B0"
+        BEGIN
+            VALUE "CompanyName",      "{{COMPANY_NAME}}"
+            VALUE "FileDescription",  "{{FILE_DESCRIPTION}}"
+            VALUE "FileVersion",      "{{VERSION}}"
+            VALUE "InternalName",     "{{BINARY_NAME}}"
+            VALUE "LegalCopyright",   "{{LEGAL_COPYRIGHT}}"
+            VALUE "OriginalFilename", "{{BINARY_NAME}}.exe"
+            VALUE "ProductName",      "{{PRODUCT_NAME}}"
+            VALUE "ProductVersion",   "{{VERSION}}"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x0409, 1200
+    END
+END
