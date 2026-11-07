@@ -17,6 +17,7 @@ Grid Craft Launcher (aka GCL) is a beautiful, fast and memory-safe Minecraft lau
 ### Prerequisites
 
 - **Rust**: This project is written in Rust. Its installation method can be found [here](https://www.rust-lang.org/tools/install/).
+- [winapp CLI](https://learn.microsoft.com/en-us/windows/apps/dev-tools/winapp-cli/) (optional, if you want to package it to MSIX).
 
 ### Clone Repo
 
