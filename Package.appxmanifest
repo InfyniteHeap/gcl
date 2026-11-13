@@ -12,7 +12,7 @@
   IgnorableNamespaces="uap uap2 uap3 uap10 desktop desktop6 rescap">
 
   <Identity
-    Name="gcl"
+    Name="com.infyniteheap.gcl"
     Publisher="CN=InfyniteHeap"
     Version="0.0.1.0" />
 
@@ -23,6 +23,7 @@
     <uap10:PackageIntegrity>
       <uap10:Content Enforcement="on"/>
     </uap10:PackageIntegrity>
+    <Description>Grid Craft Launcher (aka GCL) is a beautiful, fast and memory-safe Minecraft launcher.</Description>
   </Properties>
 
   <Dependencies>
@@ -30,7 +31,7 @@
   </Dependencies>
 
   <Resources>
-    <Resource Language="en-us"/>
+    <Resource Language="x-generate"/>
   </Resources>
 
   <Applications>
