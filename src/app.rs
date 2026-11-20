@@ -6,13 +6,13 @@ impl Component for Launcher {
     type Input = ();
     type Message = ();
 
-    fn create(_input: &(), _context: &ComponentContext<Self>) -> Self {
+    fn create(_input: &Self::Input, _context: &ComponentContext<Self>) -> Self {
         Self {}
     }
 
-    fn update(&mut self, _message: (), _context: &ComponentContext<Self>) {}
+    fn update(&mut self, _message: Self::Message, _context: &ComponentContext<Self>) {}
 
-    fn view(&self, _input: &(), context: &mut ViewContext<Self>) -> View {
+    fn view(&self, _input: &Self::Input, context: &mut ViewContext<Self>) -> View {
         context.window_visuals(WindowVisuals::new().backdrop(WindowBackdrop::Mica));
 
         StackPanel::new().children((TitleBar::new()
