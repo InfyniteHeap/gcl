@@ -1,8 +1,8 @@
 # Grid Craft Launcher
 
-> This project is under development at present.
+> _Blocks, blocks, blocks..._
 
-Grid Craft Launcher (aka GCL) is a beautiful, fast and memory-safe Minecraft launcher. Thanks to [windows-reactor](https://crates.io/crates/windows-reactor), GCL can not only present the same appearance as normal WinUI 3 apps (which are usually writtrn in C# and XAML), but also keep high-performance and smooth.
+Grid Craft Launcher (shorten as "GCL") is a beautiful, fast and memory-safe Minecraft launcher. Thanks to [windows-reactor](https://crates.io/crates/windows-reactor), it can not only present the same native Fluent UI as regular WinUI 3 apps (which are usually written in C# and XAML), but also keep high-performance and smooth.
 
 ## Features
 
@@ -16,7 +16,7 @@ Grid Craft Launcher (aka GCL) is a beautiful, fast and memory-safe Minecraft lau
 
 ### Prerequisites
 
-- **Rust**: This project is written in Rust. Its installation method can be found [here](https://www.rust-lang.org/tools/install/).
+- **Rust**: This project is written in Rust. Its installation method can be found [in this webpage](https://www.rust-lang.org/tools/install/).
 - [winapp CLI](https://learn.microsoft.com/en-us/windows/apps/dev-tools/winapp-cli/) (optional, if you want to package it to MSIX).
 
 ### Clone Repo
@@ -28,13 +28,14 @@ git clone https://github.com/InfyniteHeap/gcl.git
 ### Build and Run
 
 ```bash
+cd gcl
 cargo run
 ```
-
-## Contributing
-
-Follow [AI policy](./AI_POLICY.md) if your PR is done by AI.
 
 ## License
 
 This software is distrubuted under GPL-3.0 license.
+
+## Contributing
+
+Follow [AI policy](./AI_POLICY.md) if your PRs and issues are produced by AI.
